@@ -50,6 +50,19 @@ require("lazy").setup({
 		lazy = false 
 	},
 	{
-		'tpope/vim-fugitive'
-	}
+    'nvim-telescope/telescope.nvim',
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+		"nvim-telescope/telescope-file-browser.nvim",
+    },
+	config = function()
+	require("telescope").load_extension("file_browser")
+	vim.keymap.set("n", "<leader>fp", "<cmd>Telescope file_browser<cr>")
+	vim.keymap.set("n", "<leader>ff", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>")
+
+	local builtin = require("telescope.builtin")
+	vim.keymap.set("n", "<leader>o", builtin.find_files, {})
+	vim.keymap.set("n", "<leader>fs", builtin.live_grep, {})
+	end
+}
 })
