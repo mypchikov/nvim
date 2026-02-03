@@ -44,5 +44,12 @@ require("lazy").setup({
         vim.g.everforest_transparent_background = 2
 		vim.cmd.colorscheme('everforest')
       end
-    }
+    },
+	{ 
+		'wakatime/vim-wakatime', 
+		lazy = false 
+	},
+	{
+		'tpope/vim-fugitive'
+	}
 })
